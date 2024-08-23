@@ -1,5 +1,4 @@
-import ProductItem from './components/ProductItem';
-import { products } from './data/products';
+
 
 export const metadata = {
   title: "Home",
@@ -9,10 +8,6 @@ export const metadata = {
 export default function Home() {
  
   return (
-    <div className='grid grid-cols-4 gap-5 mt-8'>
-      {
-        products.map(product => <ProductItem key={product.id} product={product}/>)
-      }
-    </div>
+    <h1>Home page.....</h1>
   );
 }
