@@ -1,13 +1,17 @@
+import PhotoList from "../components/PhotoList";
 
 
-export const metadata = {
-  title: "Home",
-  description: "This is home page",
-};
 
-export default function Home() {
- 
+const HomePage = async () => { 
+  
+  const response = await fetch(`${process.env.BASE_API_URL}/photos`);
+  const photos = await response.json();
+
   return (
-    <h1 className="p-20 text-center text-2xl">Home page</h1>
-  );
+    <div>
+      <PhotoList photos={photos}></PhotoList>
+    </div>
+  )
 }
+
+export default HomePage
