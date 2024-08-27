@@ -1,18 +1,12 @@
-import Form from "@/components/Form";
-import UserList from "@/components/UserList";
 
-
-const HomePage = async() => {
-
+const HomePage = async () => {
   return (
-    <div className="p-20 text-center">
-      <h2 className="text-3xl"> Home Content</h2>
-      <Form/>
-     <div className="mt-6 ">
-     <UserList/>
-     </div>
+    <div className="p-20 text-center text-5xl mb-8">
+      <h2 className="font-archivo">Font Optimization Archivo</h2>
+      <h2 className="font-bitter mt-4">Font Optimization Bitter</h2>
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
+

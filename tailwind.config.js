@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        archivo: ["var(--font-archivo)"],
+        bitter: ["var(--font-bitter)"],
+      }
     }
   },
   plugins: [require('daisyui')]
