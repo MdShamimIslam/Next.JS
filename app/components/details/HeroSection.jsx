@@ -2,12 +2,12 @@ import Image from 'next/image';
 import ActionButtons from '../ActionButtons';
 
 const HeroSection = ({eventInfo}) => {
-  const {name,details,interested_ids,going_ids} = eventInfo;
+  const {_id,name,imageUrl,details,interested_ids,going_ids} = eventInfo;
   return (
     <section className="container">
       <div className="bg-gradient-to-b from-slate-200/20 to-slate-800/30">
         <Image
-          src="/assets/logo.png"
+          src={imageUrl}
           alt="Event 1"
           className="h-[450px] mx-auto"
           width={900}
@@ -25,7 +25,11 @@ const HeroSection = ({eventInfo}) => {
           </div>
         </div>
 
-        <ActionButtons fromDetails={true}/>
+        <ActionButtons 
+         eventId={_id}
+         interestedIds={interested_ids}
+        fromDetails={true}
+        />
       </div>
     </section>
   )

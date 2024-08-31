@@ -2,7 +2,7 @@
 import HeroSection from "@/app/components/details/HeroSection";
 import EventDetails from "@/app/components/details/EventDetails";
 import EventMap from "@/app/components/details/EventMap";
-import { getEventById } from "@/actions/event";
+import { getEventById } from "@/app/queries/queries";
 
 const SingleEventDetails = async({params:{id}}) => {
   const eventInfo = await getEventById(id);
