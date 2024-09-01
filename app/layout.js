@@ -1,17 +1,20 @@
-
-import { bitter } from "./fonts/fonts";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
+const inter = Inter({ subsets: ["latin"] });
+
 export const metadata = {
-  title: "Home",
-  description: "This is Home page with Next.js",
+  title: "Auth System",
+  description: "This is Auth system with Next.js",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${bitter.variable} ${bitter.archivo}`}>
+      <body className={inter.className}>
+
         {children}
+        
       </body>
     </html>
   );
