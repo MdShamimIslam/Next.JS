@@ -14,9 +14,9 @@
     @apply hidden md:flex items-center gap-6;
   }
 
-  /* nav ul .login {
+  nav ul .login {
     @apply bg-primary px-6 py-3 text-white font-bold rounded-md;
-  } */
+  }
 
   .container {
     @apply max-w-7xl mx-auto w-full px-4;
