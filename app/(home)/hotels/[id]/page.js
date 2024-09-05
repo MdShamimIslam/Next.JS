@@ -5,8 +5,8 @@ import Summary from "@/app/components/hotel/details/Summary"
 import { getHotelById } from "@/queries/queries"
 
 
-const HotelDetailsPage = async({params:{id}}) => {
-  const hotel = await getHotelById(id);
+const HotelDetailsPage = async({params:{id},searchParams:{checkin,checkout}}) => {
+  const hotel = await getHotelById(id,checkin,checkout);
   return (
     <>
         <Summary hotel={hotel} />
