@@ -1,9 +1,18 @@
+import Filter from "@/app/components/filter/Filter";
 import HotelList from "@/app/components/hotel/HotelList";
-import Filter from "@/app/components/search/Filter";
 import Search from "@/app/components/search/Search";
 
+// refine category of params function
+const refinedCategory = (category) => {
+  const decodedCategory = decodeURI(category);
+  if (decodedCategory === "undefined") {
+    return "";
+  }
+  return decodedCategory;
+}
+
 const HotelListPage = ({
-  searchParams: { destination, checkin, checkout },
+  searchParams: { destination, checkin, checkout,category },
 }) => {
 
   return (
@@ -25,7 +34,8 @@ const HotelListPage = ({
             destination={destination}
             checkin={checkin}
             checkout={checkout}
-          />
+            category={refinedCategory(category)}
+          /> 
         </div>
       </section>
     </>

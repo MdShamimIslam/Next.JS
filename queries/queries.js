@@ -2,6 +2,7 @@ import { bookingModel } from "@/models/booking-model";
 import { hotelModel } from "@/models/hotel-model";
 import { ratingModel } from "@/models/rating-model";
 import { reviewModel } from "@/models/review-model";
+import { userModel } from "@/models/user-model";
 import {
   isDateInBetween,
   replaceMongoIdInArray,
@@ -9,7 +10,7 @@ import {
 } from "@/utils/data-util";
 
 // get all hotels
-export const getAllHotels = async (destination, checkin, checkout) => {
+export const getAllHotels = async (destination, checkin, checkout,category) => {
   const regex = new RegExp(destination, "i");
 
   const hotelsByDestination = await hotelModel
@@ -41,6 +42,13 @@ export const getAllHotels = async (destination, checkin, checkout) => {
         return hotel;
       })
     );
+  }
+
+  if (category) {
+    const categoriesToMatch = category.split('|');
+    allHotels = allHotels.filter((hotel) => {
+      return categoriesToMatch.includes(hotel.propertyCategory.toString())
+    })
   }
 
   return replaceMongoIdInArray(allHotels);
@@ -79,6 +87,7 @@ export const findBooking = async(hotel_id,checkin,checkout)=>{
     }
 
   return replaceMongoIdInObject(hotel);
+  
 };
 
 // get ratings by hotel id
@@ -92,3 +101,15 @@ export const getReviewsForHotel = async (hotel_id) => {
   const reviews = await reviewModel.find({ hotelId: hotel_id }).lean();
   return replaceMongoIdInArray(reviews);
 };
+
+// get user by email
+export const getUserByEmail = async(email)=>{
+  const users = await userModel.find({email:email}).lean();
+  return replaceMongoIdInObject(users[0]);
+}
+
+// get booking by user id
+export const getBookingByUserId = async(userId)=>{
+  const bookings = await bookingModel.find({userId: userId}).lean();
+  return replaceMongoIdInArray(bookings);
+}
